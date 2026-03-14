@@ -3,6 +3,8 @@
 #include <string.h>
 #include <dirent.h>
 
+#include "path_track.h"
+
 int findexec(char *name) {
     char *PATH = getenv("PATH");
     if (!PATH) return -1; 
