@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     if(avalidate(argv[1], "typeof", argc, 3) == 0) {
       found_command = 1;
       if (isbuiltin(argv[2]) == 0) {
-        printf("%s is a shell builtin.", argv[2]);
+        printf("%s is a shell builtin.\n", argv[2]);
       } else if (findexec(argv[2]) == 0){
         printf("%s is an executable file in PATH.\n", argv[2]);
       } else {
@@ -55,6 +55,8 @@ int main(int argc, char *argv[]) {
         if (exec_code == -1) {
           printf("Could not execute\n");
         }
+      } if (id != 0) {
+        wait(NULL);
       }
       found_command = 1;
     }
