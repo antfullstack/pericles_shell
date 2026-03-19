@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-
-#include "path_track.h"
+#include "pericles_fs.h"
+#include "stdpericles.h"
 
 int isbuiltin(char* name);
 int avalidate(char* argument, char* command, int argc, int expected_argc); 
@@ -34,6 +33,37 @@ int main(int argc, char *argv[]) {
       printf("%s\n", argv[2]);
     }
 
+    if (argc > 2 && avalidate(argv[1], "sneak", argc, 3) == 0 || avalidate(argv[1], "sneak", argc, 4) == 0) {
+      found_command = 1;
+
+      if (argc == 3) {
+        char* result = scanall(argv[2]);
+        if (result == NULL) {
+          printf("Could not fetch file.");
+        } else {        
+          printf("%s\n", result);
+          free(result);
+        }
+      } else {
+        if (atoi(argv[3]) <= 0) {
+          printf("Invalid number of lines provided.");
+        } else {
+          int argc_final = atoi(argv[3]);
+          if (argc_final > 1) {
+            char* result = sneak(argv[2], argc_final);
+            if (result == NULL) {
+              printf("Could not fetch file.");
+            } else {        
+              printf("%s\n", result);
+              free(result);
+            }
+          } else {
+            printf("Number of lines must be at least 1.");
+          }
+        }
+      }
+    }
+
     if(avalidate(argv[1], "typeof", argc, 3) == 0) {
       found_command = 1;
       if (isbuiltin(argv[2]) == 0) {
@@ -46,19 +76,11 @@ int main(int argc, char *argv[]) {
     }
 
     if(isbuiltin(argv[1]) != 0 && findexec(argv[1]) == 0 && argc > 1) {
-      int id = fork();
-      if (id == -1) {
-        printf("Could not create child process to execute program\n");
-      }
-      if (id == 0) {
-        int exec_code = execvp(argv[1], argv + 1);
-        if (exec_code == -1) {
-          printf("Could not execute\n");
-        }
-      } if (id != 0) {
-        wait(NULL);
-      }
       found_command = 1;
+      int exec_code = execvp(argv[1], argv + 1);
+      if (exec_code == -1) {
+        printf("Could not execute\n");
+      } 
     }
 
     if (found_command == 0) {
@@ -68,36 +90,4 @@ int main(int argc, char *argv[]) {
     free((void*)argv);
   }
   return 0;
-}
-
-int avalidate(char* argument, char* command, int argc, int expected_argc) {
-  if (strcmp(argument, command) == 0 && argc == expected_argc) {
-    return 0;
-  } else {
-    return -1;
-  }
-}
-
-int isbuiltin(char* name) {
-  //NEEDS HASH TABLE SEARCHING (WHICH NEEDS HASH TABLE IMPLEMENTATION)
-  if (strcmp(name, "exit") == 0 || strcmp(name, "ostream") == 0 || strcmp(name, "typeof") == 0) {
-    return 0;
-  }
-  return -1;
-}
-
-// Allocates memory through malloc()
-char* const* split(char* command, int *actualsize) {
-  char** args = malloc(sizeof(char*) * 1056);
-  args[0] = "./periclesshell";
-  int counter = 1;
-  char* buf = strtok(command, " \n");
-  while (buf != NULL && counter < 1056) {
-    args[counter] = buf;
-    buf = strtok(NULL, " \n");
-    counter++;
-  }
-  args[counter] = NULL;
-  *actualsize = counter;
-  return args;
 }
