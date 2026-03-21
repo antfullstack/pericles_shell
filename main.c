@@ -79,7 +79,8 @@ int main(int argc, char *argv[]) {
       }
     }
 
-    if (avalidate(argv[1], "env", argc, 3) == 0 && argv) {
+    if (avalidate(argv[1], "fenv", argc, 3) == 0 && argv) {
+      found_command = 1;
       if (argv[2] != NULL && getenv(argv[2]) != NULL) {
         char* env = getenv(argv[2]);
         printf("Value of %s is %s\n", argv[2], env);
