@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "pericles_fs.h"
 #include "stdpericles.h"
 
@@ -28,9 +29,12 @@ int main(int argc, char *argv[]) {
       break;
     }
 
-    if (avalidate(argv[1], "ostream", argc, 3) == 0) {
+    if (strcmp(argv[1], "ostream")== 0 && argc > 2) {
       found_command = 1;
-      printf("%s\n", argv[2]);
+      for (int i = 2; i < argc; i++) {
+        printf("%s ", argv[i]);
+      }
+      printf("\n");
     }
 
     if (argc > 2 && avalidate(argv[1], "sneak", argc, 3) == 0 || avalidate(argv[1], "sneak", argc, 4) == 0) {
@@ -61,6 +65,24 @@ int main(int argc, char *argv[]) {
             printf("Number of lines must be at least 1.");
           }
         }
+      }
+    }
+
+    if (avalidate(argv[1], "scanall", argc, 3) == 0) {
+      found_command = 1;
+      char* result = scanall(argv[2]);
+      if (result == NULL) {
+        printf("Could not fetch file.");
+      } else {        
+        printf("%s\n", result);
+        free(result);
+      }
+    }
+
+    if (avalidate(argv[1], "env", argc, 3) == 0 && argv) {
+      if (argv[2] != NULL && getenv(argv[2]) != NULL) {
+        char* env = getenv(argv[2]);
+        printf("Value of %s is %s\n", argv[2], env);
       }
     }
 

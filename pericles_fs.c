@@ -86,3 +86,10 @@ char* scanall(char* path) {
     result[counter] = '\0';
     return result;
 } 
+
+char* env(char* env) {
+    if (getenv(env) == NULL) {
+        return NULL;
+    }
+    return getenv(env); 
+}
