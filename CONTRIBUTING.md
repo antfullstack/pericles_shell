@@ -1,11 +1,11 @@
-# 🤝 Contributing Guide
+# Contributing Guide
 
-First off, thank you for considering contributing to this project! 🚀\
+First off, thank you for considering contributing to this project! 
 Your time and effort are highly appreciated.
 
 ------------------------------------------------------------------------
 
-## 🧭 Before You Start
+## Before You Start
 
 Please go through the following steps before contributing:
 
@@ -22,9 +22,9 @@ Please go through the following steps before contributing:
 
 3.  **Identify your contribution**
 
-    -   Bug fix 🐛\
-    -   New feature ✨\
-    -   Improvement 🔧
+    -   Bug fix 
+    -   New feature 
+    -   Improvement 
 
 4.  **Fork the repository**
 
@@ -34,14 +34,14 @@ Please go through the following steps before contributing:
     git checkout -b feature/your-feature-name
     ```
 
-6.  **(Optional but recommended)**\
+6.  **(Optional but recommended)**
     Open an issue to discuss your idea before implementing it.
 
 7.  **Assign yourself** (if possible)
 
 ------------------------------------------------------------------------
 
-## 💻 While Working
+## While Working
 
 -   Keep your code **clean and readable**
 -   Follow the **existing project structure**
@@ -55,17 +55,17 @@ git commit -m "Add support for pipes in command parser"
 
 ------------------------------------------------------------------------
 
-## ✅ Before Submitting
+## Before Submitting
 
 Make sure you:
 
--   [ ] Tested your changes thoroughly\
--   [ ] Did not introduce new bugs\
+-   [ ] Tested your changes thoroughly
+-   [ ] Did not introduce new bugs
 -   [ ] Ensured the project still builds and runs correctly
 
 ------------------------------------------------------------------------
 
-## 🚀 Submitting Your Contribution
+## Submitting Your Contribution
 
 1.  Push your branch:
 
@@ -77,24 +77,24 @@ Make sure you:
 
 3.  Include a clear description:
 
-    -   What you changed\
-    -   Why you changed it\
+    -   What you changed
+    -   Why you changed it
     -   Any additional context
 
 ------------------------------------------------------------------------
 
-## 🌍 Other Ways to Contribute
+## Other Ways to Contribute
 
 You don't need to write code to help!
 
--   📖 Improve or fix documentation\
--   🌐 Translate documentation into other languages\
--   💡 Suggest ideas via issues\
--   🍴 Create your own forks and experiment
+-   Improve or fix documentation
+-   Translate documentation into other languages
+-   Suggest ideas via issues
+-   Create your own forks and experiment
 
 ------------------------------------------------------------------------
 
-## 💙 Final Notes
+## Final Notes
 
-Every contribution matters --- no matter how small.\
-Thanks again for helping improve this project!
+Every contribution matters --- no matter how small.
+Thanks again for helping improve this project! :)
