@@ -16,7 +16,7 @@ all: $(TARGET)
 # Link the final executable
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET)
-	@echo "--- Build Complete: Run with ./pericles ---"
+	@echo "--- Build Complete: Run with ./periclesshell ---"
 
 # Compile .c files into .o files
 %.o: %.c
