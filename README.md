@@ -25,4 +25,5 @@ Please adhere to this project's `code of conduct`.
 
 ## How to run: 
 
-Temporary solution: Compile all libraries. 
+Run 'make'. It should compile all the required libraries. 
+After that, run ./periclesshell to see the app in operation.
