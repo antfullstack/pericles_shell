@@ -3,7 +3,7 @@ CC      := gcc
 CFLAGS  := -Wall -Wextra -g
 
 # Target Name
-TARGET  := pericles
+TARGET  := periclesshell
 
 # List your source files manually or let wildcard find them
 SRCS    := main.c pericles_fs.c stdpericles.c
