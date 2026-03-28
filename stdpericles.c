@@ -15,7 +15,7 @@ int avalidate(char* argument, char* command, int argc, int expected_argc) {
 //Checks if a command is a recognised periclesshell builtin, returns 0 if found, -1 otherwise. 
 int isbuiltin(char* name) {
   //NEEDS HASH TABLE SEARCHING (WHICH NEEDS HASH TABLE IMPLEMENTATION)
-  if (strcmp(name, "exit") == 0 || strcmp(name, "fenv") == 0 || strcmp(name, "scanall") == 0 || strcmp(name, "ostream") == 0 || strcmp(name, "typeof") == 0 || strcmp(name, "sneak") == 0) {
+  if (strcmp(name, "exit") == 0 || strcmp(name, "fenv") == 0 || strcmp(name, "scanall") == 0 || strcmp(name, "ostream") == 0 || strcmp(name, "typeof") == 0 || strcmp(name, "sneak") == 0 || strcmp(name, "cd") == 0) {
     return 0;
   }
   return -1;
