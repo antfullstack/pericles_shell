@@ -15,7 +15,9 @@ int main() {
 
     char dir_buf[200];
     getcwd(dir_buf, sizeof(dir_buf));
-    printf("%s A: ", dir_buf);
+    int root_len = strlen(getenv("HOME"));
+    printf("~%s A: ", dir_buf + root_len);
+
     char command[1056]; 
     int command_capacity = sizeof(command);
     fgets(command, command_capacity, stdin);
@@ -35,8 +37,20 @@ int main() {
 
         if (avalidate(argv[1], "cd", argc, 3) == 0) {
             found_command = 1; 
+            int dir_status;
 
-            int dir_status = chdir(argv[2]);
+            if (argv[2][0] == '~') {
+                char* root = getenv("HOME");
+                if (root == NULL) {
+                    printf("Could not locate ROOT.\n");
+                } else {
+                    char* translated_dir = strcat(root, argv[2] + 1);
+                    dir_status = chdir(translated_dir);
+                }
+            } else {
+                dir_status = chdir(argv[2]);
+            }
+
             if (dir_status == -1) {
                 printf("%s is not a valid directory.\n", argv[2]);
             } 
