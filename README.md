@@ -27,3 +27,5 @@ Please adhere to this project's `code of conduct`.
 
 Run 'make'. It should compile all the required libraries. 
 After that, run ./periclesshell to see the app in operation.
+
+**You can see more regarding the project here:**  [Pericles shell documentation page](https://antfullstack.github.io/pericles_shell_docs/)
